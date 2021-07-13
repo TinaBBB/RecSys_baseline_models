@@ -3,7 +3,7 @@ from models.cdae import cdae, CDAE
 from models.vae import vae_cf, VAE
 from models.autorec import autorec, AutoRec
 from models.bpr import bpr
-from models.wrmf import als
+# from models.wrmf import als
 from models.cml import cml
 from models.puresvd import puresvd
 from models.nceplrec import nceplrec
@@ -16,7 +16,7 @@ models = {
     "CDAE": cdae,
     "VAE-CF": vae_cf,
     "BPR": bpr,
-    "WRMF": als,
+    # "WRMF": als,
     "CML": cml,
     "PureSVD": puresvd,
     "NCE-PLRec": nceplrec,
