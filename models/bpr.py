@@ -92,7 +92,7 @@ class BPR(object):
     def get_batches(user_item_pairs, rating_matrix, num_item, batch_size):
         batches = []
 
-        index_shuf = range(len(user_item_pairs))
+        index_shuf = list(range(len(user_item_pairs)))
         np.random.shuffle(index_shuf)
         user_item_pairs = user_item_pairs[index_shuf]
         for i in tqdm(range(int(len(user_item_pairs) / batch_size))):

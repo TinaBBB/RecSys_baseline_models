@@ -98,7 +98,7 @@ if __name__ == "__main__":
     parser.add_argument('-c', dest='corruption', type=check_float_positive, default=0.5)
     parser.add_argument('-s', dest='seed', type=check_int_positive, default=1)
     parser.add_argument('-m', dest='model', default="VAE-CF")
-    parser.add_argument('-d', dest='path', default="datax/yelp/")
+    parser.add_argument('-d', dest='path', default="datax/yelp_toronto/")
     parser.add_argument('-t', dest='train', default='Rtrain.npz')
     parser.add_argument('-v', dest='valid', default='Rvalid.npz')
     parser.add_argument('-k', dest='topk', type=check_int_positive, default=50)
