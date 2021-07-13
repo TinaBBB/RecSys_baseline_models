@@ -2,8 +2,9 @@ import re
 import numpy as np
 import tensorflow.compat.v1 as tf
 tf.disable_eager_execution()
+
 from tqdm import tqdm
-from tensorflow.contrib.distributions import Bernoulli
+# from tensorflow.contrib.distributions import Bernoulli
 from utils.progress import WorkSplitter, inhour
 from scipy.sparse import vstack, hstack
 from utils.regularizers import Regularizer
@@ -69,7 +70,7 @@ class VAE(object):
                     obs_epsilon = tf.random_normal(tf.shape(self.obs_mean))
                     self.sample = self.obs_mean + self._observation_std * obs_epsilon
                 else:
-                    self.sample = Bernoulli(probs=self.obs_mean).sample()
+                    self.sample = tf.distributions.Bernoulli(probs=self.obs_mean).sample()
                     # Note sample form multinomial distribution does not make any sense, which is argmax(multinomial)
 
             with tf.variable_scope('loss'):
