@@ -4,3 +4,4 @@ latent_netflix/
 latent_yahoo/
 caches/
 .idea/
+*.pyc
