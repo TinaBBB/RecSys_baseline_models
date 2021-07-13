@@ -4,4 +4,4 @@ source ~/nceplrec/bin/activate
 
 cd /home/tinashen/projects/def-ssanner/tinashen/NCE_Projected_LRec_baseline
 
-python tune_parameters.py -d data/yelp_toronto/ -n yelp_toronto/plrec.csv -y config/plrec.yml
+python tune_parameters.py -d datax/yelp_toronto/ -n yelp_toronto/plrec.csv -y config/plrec.yml
