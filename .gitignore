@@ -1,0 +1,6 @@
+data/
+latent_movielens20m/
+latent_netflix/
+latent_yahoo/
+caches/
+.idea/
