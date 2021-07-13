@@ -1,4 +1,5 @@
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_eager_execution()
 from tensorflow.contrib import layers
 
 def fc_mnist_encoder(x, latent_dim, activation=None):

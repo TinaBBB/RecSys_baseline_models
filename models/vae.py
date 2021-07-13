@@ -1,6 +1,7 @@
 import re
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_eager_execution()
 from tqdm import tqdm
 from tensorflow.contrib.distributions import Bernoulli
 from utils.progress import WorkSplitter, inhour

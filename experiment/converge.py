@@ -1,6 +1,7 @@
 import json
 import pandas as pd
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_eager_execution()
 from models.predictor import predict
 from evaluation.metrics import evaluate
 from utils.progress import WorkSplitter
