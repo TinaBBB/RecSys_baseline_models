@@ -15,7 +15,7 @@ def get_pmi_matrix(matrix, root):
     # user_rated = matrix.sum(axis=1)
     nnz = matrix.nnz
     pmi_matrix = []
-    for i in tqdm(xrange(rows)):
+    for i in tqdm(range(rows)):
         row_index, col_index = matrix[i].nonzero()
         if len(row_index) > 0:
             # import ipdb; ipdb.set_trace()
@@ -35,7 +35,7 @@ def get_pmi_matrix_gpu(matrix, root):
     item_rated = cp.array(matrix.sum(axis=0))
     pmi_matrix = []
     nnz = matrix.nnz
-    for i in tqdm(xrange(rows)):
+    for i in tqdm(range(rows)):
         row_index, col_index = matrix[i].nonzero()
         if len(row_index) > 0:
             values = cp.asarray(item_rated[:, col_index]).flatten()

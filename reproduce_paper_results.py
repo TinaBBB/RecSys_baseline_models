@@ -39,11 +39,11 @@ if __name__ == "__main__":
     # Commandline arguments
     parser = argparse.ArgumentParser(description="Reproduce")
     parser.add_argument('-n', dest='name', default="final_result.csv")
-    parser.add_argument('-d', dest='path', default="datax/")
+    parser.add_argument('-d', dest='path', default="datax/yelp_toronto/")
     parser.add_argument('-t', dest='train', default='Rtrain.npz')
     parser.add_argument('-v', dest='valid', default='Rvalid.npz')
     parser.add_argument('-e', dest='test', default='Rtest.npz')
-    parser.add_argument('-p', dest='problem', default='movielens1m')
+    parser.add_argument('-p', dest='problem', default='yelp_toronto')
     parser.add_argument('-s', dest='model_folder', default='latent') # Model saving folder
     parser.add_argument('-gpu', dest='gpu', action='store_true')
     args = parser.parse_args()

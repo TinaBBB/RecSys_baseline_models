@@ -5,3 +5,5 @@ latent_yahoo/
 caches/
 .idea/
 *.pyc
+tables/*
+*.npy
