@@ -17,7 +17,7 @@ def pop(matrix_train, **unused):
     :return: prediction in sparse matrix
     """
     progress = WorkSplitter()
-    m,n = matrix_train.shape
+    m, n = matrix_train.shape
     item_popularity = np.array(np.sum(matrix_train, axis=0)).flatten()
 
     RQ = np.ones((m, 1))

@@ -7,3 +7,4 @@ caches/
 *.pyc
 tables/*
 *.npy
+requirements.txt

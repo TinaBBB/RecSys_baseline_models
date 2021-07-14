@@ -36,9 +36,14 @@ def main(args):
     start_time = time.time()
     if args.shape is None:
         R_train = load_numpy(path=args.path, name=args.train)
+        R_test = load_numpy(path=args.path, name=args.valid)
+        R_train = R_train + R_test
     else:
         # R_train = load_pandas(path=args.path, name=args.train, shape=args.shape)
         R_train = load_csv(path=args.path, name=args.train, shape=args.shape)
+        R_test = load_numpy(path=args.path, name=args.valid)
+        R_train = R_train + R_test
+
     print("Elapsed: {0}".format(inhour(time.time() - start_time)))
 
     print("Train U-I Dimensions: {0}".format(R_train.shape))
@@ -76,7 +81,7 @@ def main(args):
         start_time = time.time()
 
         metric_names = ['R-Precision', 'MAP', 'NDCG', 'Clicks', 'Recall', 'Precision']
-        R_valid = load_numpy(path=args.path, name=args.valid)
+        R_valid = load_numpy(path=args.path, name=args.test)
         result = evaluate(prediction, R_valid, metric_names, [5, 10, 20]) #[args.topk]
         print("-")
         for metric in result.keys():
@@ -101,6 +106,7 @@ if __name__ == "__main__":
     parser.add_argument('-d', dest='path', default="datax/yelp_toronto/")
     parser.add_argument('-t', dest='train', default='Rtrain.npz')
     parser.add_argument('-v', dest='valid', default='Rvalid.npz')
+    parser.add_argument('-test', dest='test', default='Rtest.npz')
     parser.add_argument('-k', dest='topk', type=check_int_positive, default=50)
     parser.add_argument('-gpu', dest='gpu', action='store_true')
     parser.add_argument('--similarity', dest='sim_measure', default='Cosine')
