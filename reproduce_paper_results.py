@@ -6,10 +6,11 @@ from utils.modelnames import models
 from plots.rec_plots import precision_recall_curve
 import timeit
 
+
 def main(args):
     table_path = load_yaml('config/global.yml', key='path')['tables']
 
-    df = find_best_hyperparameters(table_path+args.problem, 'NDCG')
+    df = find_best_hyperparameters(table_path + args.problem, 'NDCG')
 
     R_train = load_numpy(path=args.path, name=args.train)
     R_valid = load_numpy(path=args.path, name=args.valid)
@@ -27,18 +28,19 @@ def main(args):
         row = row.to_dict()
         row['metric'] = ['R-Precision', 'NDCG', 'Precision', 'Recall', "MAP"]
         row['topK'] = topK
-        try:
-            result = execute(R_train, R_test, row, models[row['model']],
+        # try:
+        result = execute(R_train, R_test, row, models[row['model']],
                          measure=row['similarity'], gpu_on=args.gpu, folder=args.model_folder)
-            stop = timeit.default_timer()
-            print('Time: ', stop - start)
-            frame.append(result)
+        stop = timeit.default_timer()
+        print('Time: ', stop - start)
+        frame.append(result)
 
-            results = pd.concat(frame)
-            save_dataframe_csv(results, table_path, args.name)
-        except:
-            continue
+        results = pd.concat(frame)
+        save_dataframe_csv(results, table_path, args.name)
+        # except:
+        #     continue
     # precision_recall_curve(results, topK, save=True, folder='analysis/'+args.problem)
+
 
 if __name__ == "__main__":
     # Commandline arguments
@@ -49,7 +51,7 @@ if __name__ == "__main__":
     parser.add_argument('-v', dest='valid', default='Rvalid.npz')
     parser.add_argument('-e', dest='test', default='Rtest.npz')
     parser.add_argument('-p', dest='problem', default='yelp_toronto')
-    parser.add_argument('-s', dest='model_folder', default='latent') # Model saving folder
+    parser.add_argument('-s', dest='model_folder', default='latent')  # Model saving folder
     parser.add_argument('-gpu', dest='gpu', action='store_true')
     args = parser.parse_args()
 

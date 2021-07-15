@@ -17,34 +17,34 @@ def execute(train, test, params, model, measure='Cosine', gpu_on=True, analytica
 
     df = pd.DataFrame(columns=columns)
 
-    if os.path.isfile('{2}/U_{0}_{1}.npy'.format(params['model'], params['rank'], folder)):
-
-        RQ = np.load('{2}/U_{0}_{1}.npy'.format(params['model'], params['rank'], folder))
-        Y = np.load('{2}/V_{0}_{1}.npy'.format(params['model'], params['rank'], folder))
-
-        if os.path.isfile('{2}/B_{0}_{1}.npy'.format(params['model'], params['rank'], folder)):
-            Bias = np.load('{2}/B_{0}_{1}.npy'.format(params['model'], params['rank'], folder))
-        else:
-            Bias = None
+    # if os.path.isfile('{2}/U_{0}_{1}.npy'.format(params['model'], params['rank'], folder)):
+    #
+    #     RQ = np.load('{2}/U_{0}_{1}.npy'.format(params['model'], params['rank'], folder))
+    #     Y = np.load('{2}/V_{0}_{1}.npy'.format(params['model'], params['rank'], folder))
+    #
+    #     if os.path.isfile('{2}/B_{0}_{1}.npy'.format(params['model'], params['rank'], folder)):
+    #         Bias = np.load('{2}/B_{0}_{1}.npy'.format(params['model'], params['rank'], folder))
+    #     else:
+    #         Bias = None
             
-    else:
+    # else:
 
-        RQ, Yt, Bias = model(train,
-                             embeded_matrix=np.empty((0)),
-                             iteration=params['iter'],
-                             rank=params['rank'],
-                             lam=params['lambda'],
-                             alpha=params['alpha'],
-                             corruption=params['corruption'],
-                             root=params['root'],
-                             gpu_on=gpu_on)
-        Y = Yt.T
+    RQ, Yt, Bias = model(train,
+                         embeded_matrix=np.empty((0)),
+                         iteration=params['iter'],
+                         rank=params['rank'],
+                         lam=params['lambda'],
+                         alpha=params['alpha'],
+                         corruption=params['corruption'],
+                         root=params['root'],
+                         gpu_on=gpu_on)
+    Y = Yt.T
 
-        print(RQ.shape, Y.shape)
-        np.save('{2}/U_{0}_{1}'.format(params['model'], params['rank'], folder), RQ)
-        np.save('{2}/V_{0}_{1}'.format(params['model'], params['rank'], folder), Y)
-        if Bias is not None:
-            np.save('{2}/B_{0}_{1}'.format(params['model'], params['rank'], folder), Bias)
+    print(RQ.shape, Y.shape)
+        # np.save('{2}/U_{0}_{1}'.format(params['model'], params['rank'], folder), RQ)
+        # np.save('{2}/V_{0}_{1}'.format(params['model'], params['rank'], folder), Y)
+        # if Bias is not None:
+        #     np.save('{2}/B_{0}_{1}'.format(params['model'], params['rank'], folder), Bias)
 
     progress.subsection("Prediction")
 
