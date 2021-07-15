@@ -17,6 +17,8 @@ def main(args):
 
     R_train = R_train + R_valid
 
+    print(R_train.shape, R_test.shape)
+
     topK = [5, 10, 15, 20, 50]
 
     frame = []
@@ -25,15 +27,18 @@ def main(args):
         row = row.to_dict()
         row['metric'] = ['R-Precision', 'NDCG', 'Precision', 'Recall', "MAP"]
         row['topK'] = topK
-        result = execute(R_train, R_test, row, models[row['model']],
+        try:
+            result = execute(R_train, R_test, row, models[row['model']],
                          measure=row['similarity'], gpu_on=args.gpu, folder=args.model_folder)
-        stop = timeit.default_timer()
-        print('Time: ', stop - start)
-        frame.append(result)
+            stop = timeit.default_timer()
+            print('Time: ', stop - start)
+            frame.append(result)
 
-    results = pd.concat(frame)
-    save_dataframe_csv(results, table_path, args.name)
-    precision_recall_curve(results, topK, save=True, folder='analysis/'+args.problem)
+            results = pd.concat(frame)
+            save_dataframe_csv(results, table_path, args.name)
+        except:
+            continue
+    # precision_recall_curve(results, topK, save=True, folder='analysis/'+args.problem)
 
 if __name__ == "__main__":
     # Commandline arguments

@@ -40,6 +40,7 @@ def execute(train, test, params, model, measure='Cosine', gpu_on=True, analytica
                              gpu_on=gpu_on)
         Y = Yt.T
 
+        print(RQ.shape, Y.shape)
         np.save('{2}/U_{0}_{1}'.format(params['model'], params['rank'], folder), RQ)
         np.save('{2}/V_{0}_{1}'.format(params['model'], params['rank'], folder), Y)
         if Bias is not None:
