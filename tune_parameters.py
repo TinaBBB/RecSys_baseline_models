@@ -10,14 +10,14 @@ def main(args):
     params['models'] = {params['models']: models[params['models']]}
     R_train = load_numpy(path=args.path, name=args.train)
     R_valid = load_numpy(path=args.path, name=args.valid)
-    R_test = load_numpy(path=args.path, name=args.test)
-    hyper_parameter_tuning(R_train+R_valid, R_test, params, save_path=args.name, measure=params['similarity'], gpu_on=args.gpu)
+    # R_test = load_numpy(path=args.path, name=args.test)
+    hyper_parameter_tuning(R_train, R_valid, params, save_path=args.name, measure=params['similarity'], gpu_on=args.gpu)
 
 if __name__ == "__main__":
     # Commandline arguments
     parser = argparse.ArgumentParser(description="ParameterTuning")
     parser.add_argument('-n', dest='name', default="autorecs_tuning.csv")
-    parser.add_argument('-d', dest='path', default="datax/")
+    parser.add_argument('-d', dest='path', default="datax/yelp_toronto/")
     parser.add_argument('-t', dest='train', default='Rtrain.npz')
     parser.add_argument('-v', dest='valid', default='Rvalid.npz')
     parser.add_argument('-test', dest='test', default='Rtest.npz')
