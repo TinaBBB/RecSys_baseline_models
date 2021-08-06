@@ -114,7 +114,7 @@ def load_pickle(path, name):
 def load_yaml(path, key='parameters'):
     with open(path, 'r') as stream:
         try:
-            return yaml.load(stream)[key]
+            return yaml.safe_load(stream)[key]
         except yaml.YAMLError as exc:
             print(exc)
 

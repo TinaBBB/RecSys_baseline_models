@@ -4,4 +4,4 @@ source ~/nceplrec/bin/activate
 
 cd /home/tinashen/projects/def-ssanner/tinashen/NCE_Projected_LRec_baseline
 
-python reproduce_paper_results.py -n yelp_orig_final_result -d datax/yelp_orig/ -p yelp_orig
+python tune_parameters.py -d datax/yelp_orig/ -n yelp_orig/cdae-part2.csv -y config/cdae-part2.yml
