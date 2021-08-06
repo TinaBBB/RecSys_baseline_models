@@ -82,7 +82,7 @@ def main(args):
 
         metric_names = ['R-Precision', 'MAP', 'NDCG', 'Clicks', 'Recall', 'Precision']
         R_valid = load_numpy(path=args.path, name=args.test)
-        result = evaluate(prediction, R_valid, metric_names, [5, 10, 20]) #[args.topk]
+        result = evaluate(prediction, R_valid, metric_names, [5, 10, 15, 20, 50]) #[args.topk]
         print("-")
         for metric in result.keys():
             print("{0}:{1}".format(metric, result[metric]))

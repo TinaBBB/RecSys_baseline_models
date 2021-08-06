@@ -5,4 +5,4 @@ source ~/nceplrec/bin/activate
 cd /home/tinashen/projects/def-ssanner/tinashen/NCE_Projected_LRec_baseline
 
 
-python tune_parameters.py -d datax/yelp_orig/ -n yelp_orig/autorec.csv -y config/autorec.yml
+python tune_parameters.py -d datax/beer/ -n beer/autorec.csv -y config/autorec.yml
