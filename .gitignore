@@ -8,3 +8,4 @@ caches/
 tables/*
 *.npy
 requirements.txt
+datax/ml-20m/ratings.csv

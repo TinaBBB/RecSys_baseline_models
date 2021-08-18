@@ -5,7 +5,7 @@ import time
 from utils.io import load_numpy, load_pandas, load_csv
 from utils.argcheck import check_float_positive, check_int_positive, shape
 from utils.modelnames import models
-from models.predictor import predict,predict_batch
+from models.predictor import predict, predict_batch
 from evaluation.metrics import evaluate
 
 
