@@ -29,8 +29,8 @@ if __name__ == "__main__":
     parser.add_argument('--implicit', dest='implicit', action='store_true')
     parser.add_argument('-r', dest='ratio', type=ratio, default='0.5,0.2,0.3')
     parser.add_argument('-d', dest='path',
-                        default="data/")
-    parser.add_argument('-n', dest='name', default='movielens/ml-20m/ratings.csv')
+                        default="datax/")
+    parser.add_argument('-n', dest='name', default='ml-20m/ratings.csv')
     parser.add_argument('--shape', help="CSR Shape", dest="shape", type=shape, nargs=2)
     args = parser.parse_args()
 
