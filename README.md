@@ -2,6 +2,8 @@
 
 ## Preprocess and generate datasets from raw data
 **Movielens dataset** <br>
+Timestamp preprocessing: the timestamp format needed to be preprocessed before splitting the dataset, the code is in the ipython notebook `datax\ml-20m\adjust_timestamp.ipynb`. This notebooks preprocesses the `ratings_raw.csv` to reproduce `ratings.csv`. <br>
+
 `python getmovielens.py --implicit` <br>
 
 Following detail designs should be noted:
