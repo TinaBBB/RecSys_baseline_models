@@ -1,4 +1,6 @@
-# NCE_Projected_LRec_baseline
+# RecSys_baseline_models
+
+Modified based on github repository: https://github.com/wuga214/NCE_Projected_LRec
 
 ## Preprocess and generate datasets from raw data
 **Movielens dataset** <br>
